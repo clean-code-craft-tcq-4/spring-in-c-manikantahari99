@@ -1,5 +1,6 @@
 #include "stats.h"
 #include "stdio.h"
+#include "math.h"
 
 
 
@@ -11,6 +12,11 @@ struct Stats compute_statistics(const float* numberset, int setlength)
 	float max = 0;
 	struct Stats s;
 	int count = 0;
+
+	s.max = NAN;
+	s.average = NAN;
+	s.min = NAN;
+
 
 	if (numberset != nullptr)
 	{
@@ -28,23 +34,25 @@ struct Stats compute_statistics(const float* numberset, int setlength)
 
 			count++;
 		}
+		s.average = 1.0*sum / setlength;
+		s.max = max;
+		s.min = min;
 	}
-	s.average = 1.0*sum / setlength;
-	s.max = max;
-	s.min = min;
+
 	return s;
 }
 
 //This Function is used to Check the threshold and Alert the user.
 void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stats computedStats)
 {
+
 	if (alerters != nullptr)
 	{
 		/*If the max value is greater than the Threshold value. It should call email Alert and Led Alert*/
 		if (computedStats.max > maxThreshold)
 		{
-			alerters[0]();
-			alerters[1]();
+			alerters[0]();//Email Alert
+			alerters[1]();//Led Alert
 		}
 	}
 
