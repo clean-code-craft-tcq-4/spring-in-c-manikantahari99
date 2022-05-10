@@ -16,7 +16,7 @@ struct Stats compute_statistics(const float* numberset, int setlength)
 	struct Stats s;
 	int count = 0;
 
-	if (numberset != '\0')
+	if (numberset != nullptr)
 	{
 		min = numberset[0];
 		max = numberset[0];
@@ -42,7 +42,7 @@ struct Stats compute_statistics(const float* numberset, int setlength)
 //This Function is used to Check the threshold and Alert the user.
 void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stats computedStats)
 {
-	if (alerters != '\0')
+	if (alerters != nullptr)
 	{
 		/*If the max value is greater than the Threshold value. It should call email Alert and Led Alert*/
 		if (computedStats.max > maxThreshold)
