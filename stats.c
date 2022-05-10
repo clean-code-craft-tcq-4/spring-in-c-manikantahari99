@@ -2,9 +2,6 @@
 #include "stdio.h"
 
 
-int emailAlertCallCount = 0;
-int ledAlertCallCount = 0;
-
 
 //This Function is used to calculate the Min, Max and Average.
 struct Stats compute_statistics(const float* numberset, int setlength)
@@ -51,14 +48,4 @@ void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stat
 		}
 	}
 
-}
-
-
-void emailAlerter(void)
-{
-	emailAlertCallCount = 1;
-}
-void ledAlerter(void)
-{
-	ledAlertCallCount = 1;
 }
