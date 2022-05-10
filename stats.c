@@ -9,7 +9,6 @@ int ledAlertCallCount = 0;
 //This Function is used to calculate the Min, Max and Average.
 struct Stats compute_statistics(const float* numberset, int setlength)
 {
-	float average;
 	float sum = 0;
 	float min = 0;
 	float max = 0;
