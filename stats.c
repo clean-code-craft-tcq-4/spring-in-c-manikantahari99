@@ -1,6 +1,7 @@
 #include "stats.h"
 #include "stdio.h"
 #include "math.h"
+#include "stdlib.h"
 
 
 
@@ -18,7 +19,7 @@ struct Stats compute_statistics(const float* numberset, int setlength)
 	s.min = NAN;
 
 
-	if (numberset != nullptr)
+	if (numberset != NULL && setlength > 0)
 	{
 		min = numberset[0];
 		max = numberset[0];
@@ -46,7 +47,7 @@ struct Stats compute_statistics(const float* numberset, int setlength)
 void check_and_alert(float maxThreshold, alerter_funcptr alerters[], struct Stats computedStats)
 {
 
-	if (alerters != nullptr)
+	if (alerters != NULL)
 	{
 		/*If the max value is greater than the Threshold value. It should call email Alert and Led Alert*/
 		if (computedStats.max > maxThreshold)
